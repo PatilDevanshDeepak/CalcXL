@@ -117,11 +117,6 @@ class WorkBook:
 		elif isRangeName==None and (isRowIndex!=None and isColumnIndex!=None):
 			return False
 
-
-	# In build funtions
-
-
-
 Calc = WorkBook()
 
 def Automate():
