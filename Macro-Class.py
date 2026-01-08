@@ -73,9 +73,6 @@ class WorkBook:
 	def EndColumn(self , oCell):					# NEW Returns End Column of a Range as an int 
 		return self.RangeAddress.EndColumn + 1
 	
-	def WorkArea(self):			# NEW Get the Range of the Area worked 
-		pass
-	
 	def RangeAddress(self , absolute=False):			# NEW Returns the Address of a Cell/Range 
 		if absolute:
 			return self.getActiveSelection().AbsoluteName 
@@ -112,12 +109,6 @@ class WorkBook:
 			self.Sheets.removeByName(name)
 		elif isinstance(addr , str):
 			self.SearchSheetByName(addr).removeByName(addr)
-	
-	def MoveSheetAhead(self , index=None , moveAhead=None):			# Can give name/instead to moveAhead of index
-		pass
-	
-	def MoveSheetBefore(self , index=None , moveBefore=None):
-		pass
 
 	def ClearContents(self, obj, clearAll=False):		# Note: This Function Have Bugs !!!
 		# Clear All Values can be:
