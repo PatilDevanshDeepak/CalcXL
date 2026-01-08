@@ -1,4 +1,4 @@
-# v-0.2 Experimental: This branch is work in progress
+# v-0.2 Unstable
 
 ## New Features:
 
@@ -16,4 +16,4 @@
 
 
 
-### Note this experimental version may have some bugs
+### Note this unstable version may have some bugs
