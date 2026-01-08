@@ -11,6 +11,7 @@
 ### 8. New fucntion DeleteSheet deletes a sheet  Eg. Calc.DeleteSheet(addr) where addr can be your sheet index or sheet name
 ### 9. New function ClearContents clears the contents of a Range/Cell  Eg. Calc.ClearContents(obj, clearAll) where obj is your cell/range and clearAll is your flag which dicides what to clear String, int, formula or everything. Note: This function may have bugs
 
+
 ## Now in your WorkBook class, new constructors are:
 ### Sheets which have all the sheets stored as a objects in a variable
 ### ActiveSheet which have current sheet stored as a object in a variable
