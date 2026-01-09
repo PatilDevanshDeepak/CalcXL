@@ -184,4 +184,4 @@ class WorkBook:
 Calc = WorkBook()
 
 def Automate():
-	Calc.Range(fromCell=self.Cell(1 , 1) , toCell=self.Cell(10 , 2)).String = "Hello world"
+	Calc.Range(fromCell=Calc.Cell(1 , 1) , toCell=Calc.Cell(10 , 2)).String = "Hello world"
