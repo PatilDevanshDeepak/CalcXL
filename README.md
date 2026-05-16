@@ -1,40 +1,24 @@
-# LibreCalc-Python-Macros-like-VBA v0.1
+# Libreoffice Calc Python Macros version 0.3 - Stable
 
-## Libreoffice Free & Opensource Office Suite - https://www.libreoffice.org/download/download-libreoffice/. Download the Latest version, as old version may not have the extensions support
+## Features:
+### 1. Now select function can select Cells/Range and worksheet  Eg: Calc.Select(Calc.Cell(1 , 1)) or Calc.Select(Calc.Range("A1:C10")) or Calc.Select(Calc.SheetName())
+### 2. Now you can set value to a range Eg: Calc.Range("A1:A10").String = "Hello word"
+### 3. New function RangeAddress returns the Address of a cell
+### 4. New function SheetName returns worksheet as an object by name and you can select a worksheet  Eg. Calc.Select(Calc.SheetName("nameofsheet"))
+### 5. New function SheetIndex returns worksheet as an object by index and you can select a worksheet  Eg. Calc.Select(Calc.SheetName(indexofsheet))
+### 6. New function CreateSheet creates a new sheet by giving sheet name, and using set before attribute Eg Calc.CreateSheet("SHEETNAME" , 1) then the sheet will be created on index 2
+### 7. New fuction RenameSheet renames a sheet  Eg. Calc.RenameSheet("oldname" , "newname")
+### 8. New fucntion DeleteSheet deletes a sheet  Eg. Calc.DeleteSheet(addr) where addr can be your sheet index or sheet name
+### 9. New function ClearContents clears the contents of a Range/Cell  Eg. Calc.ClearContents(obj, clearAll) where obj is your cell/range and clearAll is your flag which dicides what to clear String, int, formula or everything. Note: This function may have bugs
 
-"LibreCalc Python Macros like VBA" offers a small python file that comes with CLASS &amp; FUNCTIONALITIES just like VBA.
-
-
-### Download Python Macros Extension for LibreCalc (APSO)
-
-Download the Libre Calc extension from: https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python.
-In Libreoffice goto -> Tools -> Extensions.
-An Extensions window will appear, click on ADD.
-Then Browse your extension which you downloaded.
-
-
-## Functionalities
-
-### class WorkBook have functionalities like
-![image](https://github.com/user-attachments/assets/5d759efd-70ac-4ffc-a6e1-a08b8e58e800)
+<img width="188" height="225" alt="image" src="https://github.com/user-attachments/assets/2ff26132-ac05-4801-83b5-ed1b17fb98b1" />
 
 
 
-Check the latest version for more functions (new branch)
 
-
-### Automation
-
-Goto -> Tools -> Macros -> Orgranize python Script (Note - 'Orgranize python Script' option will only appeare when you install the python extension).
-In MyMacros goto -> Modules -> Click on menu -> create module, Give a name to the module.
-New module will be created, no click on the module which you created.
-Goto -> Menu -> Edit.
-now paste the code.
-
-
-
-#### Note - You must first call the WorkBook Class and Also Must Create USER DEFINED FUNCTION (in my case "Automate")
-The below code will create a "Automate" process. For eg in the code, "Automate" process selects the Cell A1 and prints 'Hello world' in it, you can edit code asper your requirements.
-
-![image](https://github.com/user-attachments/assets/a5b673ac-8f01-46b0-89a4-1fa564354866)
-
+## Now in your WorkBook class, new constructors are:
+### Sheets which have all the sheets stored as a objects in a variable
+### ActiveSheet which have current sheet stored as a object in a variable
+### SheetCount returns the total number of sheets in your workbook
+### ActiveSheetName returns the name of the current sheet
+### ActiveSheetIndex returns the index of the current sheet
