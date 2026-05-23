@@ -1,4 +1,4 @@
-# Libreoffice Calc Python Macros version 0.3 - In Development
+# Libreoffice Calc Python Macros version 0.3 - Dev
 
 ## Features:
 ### 1. Now select function can select Cells/Range and worksheet  Eg: Calc.Select(Calc.Cell(1 , 1)) or Calc.Select(Calc.Range("A1:C10")) or Calc.Select(Calc.SheetName())
