@@ -1,5 +1,7 @@
 # Libreoffice Calc Python Macros version 0.3 - Dev
 
+📖 **[How to Use Guide](./How-To-Use.md)** | Quick Start
+
 ## Features:
 ### 1. Now select function can select Cells/Range and worksheet  Eg: Calc.Select(Calc.Cell(1 , 1)) or Calc.Select(Calc.Range("A1:C10")) or Calc.Select(Calc.SheetName())
 ### 2. Now you can set value to a range Eg: Calc.Range("A1:A10").String = "Hello word"
