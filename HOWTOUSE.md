@@ -11,6 +11,8 @@ Download it and go to Libreoffice/Openoffice, open tools menu and then open Exte
 It will have 'Add' button, click it and find the path where you installed the extension.
 And then open the extension (APSO.oxt file), now the Libreoffice/Openoffice installs the extension.
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/daff5436-f83c-4753-9483-ce3ca03b6fd3" />
+
 
 USE:
 In the menu bar go to, Tools > Macros > Organise Python Macros (This option will appear only after you install the extension)
