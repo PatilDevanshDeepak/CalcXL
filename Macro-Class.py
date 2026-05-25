@@ -1,6 +1,3 @@
-import uno
-from com.sun.star.sheet.CellFlags import STRING, VALUE, FORMULA
-
 class WorkBook:
 	def __init__(self):				# Constructors of Workbook class
 		self.doc = XSCRIPTCONTEXT.getDocument()
@@ -10,8 +7,17 @@ class WorkBook:
 		self.SheetsCount = self.Sheets.getCount()
 		self.ActiveSheetName = self.ActiveSheet.getName()
 		self.ActiveSheetIndex = self.Sheets.getElementNames().index(self.ActiveSheetName)+1
-		self.ActiveCell = self.getActiveSelection()
 
+
+	# Funtions for workbook class development
+	def isNull(self, oCell):
+		return True if len(oCell.getString())==0 else False
+
+	@property
+	def ActiveCell(self):
+		return self.active.getSelection()
+
+	
 	# Macro Functionalities
 	def Select(self, obj):					# IMROVED Now you can Select Cell/Range or a Sheet, Eg: Calc.Select(Calc.Cell(1 , 1)) or Calc.Select(Calc.Range("A1:C10")) or Calc.Select(Calc.SheetName())       
 		if hasattr(obj, "_r"):
@@ -172,13 +178,6 @@ class WorkBook:
 			XSCRIPTCONTEXT.getComponentContext()
 		)
 		return func_access.callFunction(functionName, tuple(args))
-
-	# Funtions for workbook class development
-	def isNull(self, oCell):
-		return True if len(oCell.getString())==0 else False
-
-	def getActiveSelection(self):
-		return self.active.getSelection()
 
 
 Calc = WorkBook()
