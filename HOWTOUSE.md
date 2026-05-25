@@ -6,12 +6,11 @@ And works on Libreoffice & Openoffice
 INSTALLATION:
 In Libreoffice or Openoffice you just need this extension:
 https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python
+<img width="1599" height="817" alt="image" src="https://github.com/user-attachments/assets/c35be396-d9fc-428b-baff-7a6347407efb" />
 
 Download it and go to Libreoffice/Openoffice, open tools menu and then open Extensions option.
 It will have 'Add' button, click it and find the path where you installed the extension.
 And then open the extension (APSO.oxt file), now the Libreoffice/Openoffice installs the extension.
-<img width="1599" height="817" alt="image" src="https://github.com/user-attachments/assets/c35be396-d9fc-428b-baff-7a6347407efb" />
-
 
 
 USE:
