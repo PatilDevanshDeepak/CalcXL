@@ -1,5 +1,7 @@
-# Libreoffice Calc Python Macros version 0.4 - Stable
-## Note the dev versions is under development and might contain bugs
+# CalcXL version 0.4 - Stable
+## This is a stable branch and might not contain bugs
+
+## Repo's naem is updated to: CalcXL
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
