@@ -120,65 +120,6 @@ class Workbook:
 		elif isinstance(addr , str):
 			self.SearchSheetByName(addr).removeByName(addr)
 
-	# Clears the content from given Cell/Range. NOTE: THIS FUNCTION HAS BUGS
-	def ClearContents(self, obj, clearAll=False):
-		# Clear All Values can be:
-		FLAG_STRING = 1
-		FLAG_VALUE = 2
-		FLAG_FORMULA = 4
-		FLAG_HARDATTR = 16  # formatting
-		FLAG_ALL = 7	# clear all
-
-		## NOTE: if the clearAll is not given it will consider 7 as value
-		if clearAll:
-			flags = FLAG_STRING | FLAG_VALUE | FLAG_FORMULA | FLAG_HARDATTR
-		else:
-			flags = FLAG_STRING | FLAG_VALUE | FLAG_FORMULA   # = 7
-	
-	# This function is like xlToRight in VBA. NOTE: THIS FUNCTION HAS BUGS
-	def clcToRight(self):
-		nullCell = self.isNull(self.ActiveCell)
-		count = 0
-		while count <= self.getEndColumn()-1:
-			nullCell = self.isNull(self.Offset(0 , count))
-			if nullCell != self.isNull(self.ActiveCell):
-				break
-			count += 1
-		return self.Offset(0 , count-1 if not self.isNull(self.ActiveCell) else count)
-	
-	# This function is like xlToLeft in VBA. NOTE: THIS FUNCTION HAS BUGS
-	def clcToLeft(self):
-		nullCell = self.isNull(self.ActiveCell)
-		count = 0
-		while abs(count) <= self.getStartColumn()-1:
-			nullCell = self.isNull(self.Offset(0 , count))
-			if nullCell != self.isNull(self.ActiveCell):
-				break
-			count -= 1
-		return self.Offset(0 , count+1 if not self.isNull(self.ActiveCell) else count)
-	
-	# This function is like xlDown in VBA. 
-	def clcDown(self):
-		nullCell = self.isNull(self.ActiveCell)
-		count = 0
-		while count <= self.getEndRow()-1:
-			nullCell = self.isNull(self.Offset(count , 0))
-			if nullCell != self.isNull(self.ActiveCell):
-				break
-			count += 1
-		return self.Offset(count-1 if not self.isNull(self.ActiveCell) else count , 0)
-	
-	# This function is like xlUp in VBA. NOTE: THIS FUNCTION HAS BUGS
-	def clcUp(self):
-		nullCell = self.isNull(self.ActiveCell)
-		count = 0
-		while count <= self.getStartRow()-1:
-			nullCell = self.isNull(self.Offset(count , 0))
-			if nullCell != self.isNull(self.ActiveCell):
-				break
-			count -= 1
-		return self.Offset(count+1 if not self.isNull(self.ActiveCell) else count , 0)
-
 	# Calc.WorksheetFunctions("functionName in capital" , [args as tuple]) for eg: Calc.Offset(0 , -1).Value = Calc.WorksheetFunctions("ISBLANK" , [Calc.ActiveCell.getString()].
 	# IF you are giving cell ref. always add .getString() ahead to get the cell contents as String
 	def WorksheetFunctions(self, functionName , args):

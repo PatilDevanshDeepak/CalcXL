@@ -31,6 +31,12 @@ Go to 'My Macros' > Automate and run it.
 <img width="1600" height="860" alt="image" src="https://github.com/user-attachments/assets/88f5f8f7-f5ad-47ba-a0c5-9ee50cd95e36" />
 <img width="1600" height="859" alt="image" src="https://github.com/user-attachments/assets/c290c524-6058-4a5d-bfad-cacbe69158ff" />
 
+Add the Workbook class code here:
+<img width="1911" height="1034" alt="image" src="https://github.com/user-attachments/assets/96a13d8c-ffd4-472d-a2e9-593569661270" />
+
+Add this to the bottom of code:
+<img width="1919" height="1037" alt="image" src="https://github.com/user-attachments/assets/609a40b7-eab9-4084-8fc1-df05e6bceea0" />
+
 
 EXPLAINATION:
 What's happening is you created a Module in 'My Macros', and inside that you paste the Macros Class code
