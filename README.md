@@ -1,7 +1,7 @@
 # CalcXL version 0.4 - Stable
 ## This is a stable branch and might not contain bugs
 
-## Repo's naem is updated to: CalcXL
+## Repo's name is updated to: CalcXL
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
