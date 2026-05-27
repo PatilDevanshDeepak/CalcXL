@@ -1,16 +1,7 @@
-# Libreoffice Calc Python Macros version 0.3 - Stable version
+# Libreoffice Calc Python Macros version 0.3 - Dev
+## Note the dev versions is under development and might contain bugs
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
-## Summary: This version mostly focuses on fixing bugs
-
-## New:
-Contructors Added:
-  MaxRows: Gets total rows from the current worksheet
-  MaxColumns: Gets total column from the current worksheet
-
-## Bug Fixed:
-Fixed the Select Function
-Fixed ActiveCell Constructor
-Removed clcToRight, clcToLeft, clcUp, clcDown functions from stable branch
-Remove ClearContents function from the stable branch
+## Summary: This is the development branch of v0.4 its for adding new features.
+The clcToRight, clcToLeft, clcToDown, clcToUp & ClearContents function were added to dev branch to maintain the stability of this branch.
