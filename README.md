@@ -1,4 +1,4 @@
-# Libreoffice Calc Python Macros version 0.3 - Dev
+# Libreoffice Calc Python Macros version 0.3 - Stable version
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
