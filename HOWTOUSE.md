@@ -4,16 +4,16 @@ Note this is only for Libreoffice Calc (its an Microsoftoffice excel alternative
 And works on Libreoffice & Openoffice
 
 INSTALLATION:
-In Libreoffice or Openoffice you just need this extension:
-https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python
+## In Libreoffice or Openoffice you just need this extension:
+## https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python
 <img width="1599" height="817" alt="image" src="https://github.com/user-attachments/assets/c35be396-d9fc-428b-baff-7a6347407efb" />
 
-Download it and go to Libreoffice/Openoffice, open tools menu and then open Extensions option.
+## Download it and go to Libreoffice/Openoffice, open tools menu and then open Extensions option.
 <img width="1600" height="859" alt="image" src="https://github.com/user-attachments/assets/a0895ad1-c0b7-4fd1-8a10-f4410f2ba863" />
 
-It will have 'Add' button, click it and find the path where you installed the extension.
-And then open the extension (APSO.oxt file), now the Libreoffice/Openoffice installs the extension.
-This will restart the LibreCalc App.
+## It will have 'Add' button, click it and find the path where you installed the extension.
+## And then open the extension (APSO.oxt file), now the Libreoffice/Openoffice installs the extension.
+## This will restart the LibreCalc App.
 <img width="1600" height="857" alt="image" src="https://github.com/user-attachments/assets/98d53866-7ab8-46da-a441-2a600d96e5c3" />
 
 USE:
