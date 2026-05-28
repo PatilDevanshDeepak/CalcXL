@@ -6,7 +6,7 @@
 
 ## New:
 Contructors Added:
-  MaxRows: Gets total rows from the current worksheet
+  MaxRows: Gets total rows from the current worksheet,
   MaxColumns: Gets total column from the current worksheet
 
 ## Bug Fixed:
