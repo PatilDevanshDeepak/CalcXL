@@ -26,16 +26,17 @@ Paste the MacroClass file's code inside that module, and at the bottom add:
     Calc.ActiveCell.String = "Hello world"
     Calc.Range("C1:D10").String = "Hello World"
 Save it and again go to Tools > Macros > Organise Python Macros.
-Go to 'My Macros' > Automate and run it.
+## Go to 'My Macros' > Automate and run it.
 <img width="1599" height="860" alt="image" src="https://github.com/user-attachments/assets/5a10be91-ef89-4bcd-aa5b-9d8cda2c65ef" />
 <img width="1600" height="860" alt="image" src="https://github.com/user-attachments/assets/88f5f8f7-f5ad-47ba-a0c5-9ee50cd95e36" />
 <img width="1600" height="859" alt="image" src="https://github.com/user-attachments/assets/c290c524-6058-4a5d-bfad-cacbe69158ff" />
 
-Add the Workbook class code here:
+## Add the Workbook class code here:
 <img width="1911" height="1034" alt="image" src="https://github.com/user-attachments/assets/96a13d8c-ffd4-472d-a2e9-593569661270" />
 
-Add this to the bottom of code:
-<img width="1919" height="1037" alt="image" src="https://github.com/user-attachments/assets/609a40b7-eab9-4084-8fc1-df05e6bceea0" />
+## Add this to the bottom of code:
+<img width="1919" height="1033" alt="image" src="https://github.com/user-attachments/assets/a8b27393-b8d9-439b-9bbd-3eef8e2a1096" />
+
 
 
 EXPLAINATION:
