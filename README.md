@@ -2,9 +2,9 @@
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
-## Summary: This version mostly focuses on fixing bugs
+## Summary: The development branch mostly focuses on testing and adding new features. This branch migh contain bugs as new features are added and tested in this branch.
 
-## New:
+New:
 Contructors Added:
   MaxRows: Gets total rows from the current worksheet,
   MaxColumns: Gets total column from the current worksheet
@@ -12,5 +12,5 @@ Contructors Added:
 ## Bug Fixed:
 Fixed the Select Function
 Fixed ActiveCell Constructor
-Removed clcToRight, clcToLeft, clcUp, clcDown functions from stable branch
-Remove ClearContents function from the stable branch
+Removed clcToRight, clcToLeft, clcUp, clcDown functions from stable branch and added to this branch
+Remove ClearContents function from the stable branch and added to this branch
