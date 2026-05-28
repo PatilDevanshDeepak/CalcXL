@@ -10,7 +10,7 @@ Contructors Added:
   MaxColumns: Gets total column from the current worksheet
 
 ## Bug Fixed:
-Fixed the Select Function
-Fixed ActiveCell Constructor
-Removed clcToRight, clcToLeft, clcDown & clcUp functions was removed and was added to this branch and added to Dev branch
-Removed ClearContents Function and was added to Dev branch
+- Fixed the Select Function
+- Fixed ActiveCell Constructor
+- Removed clcToRight, clcToLeft, clcDown & clcUp functions was removed and was added to this branch and added to Dev branch
+- Removed ClearContents Function and was added to Dev branch
