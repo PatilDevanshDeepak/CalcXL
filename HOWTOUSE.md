@@ -4,16 +4,16 @@ Note this is only for Libreoffice Calc (its an Microsoftoffice excel alternative
 And works on Libreoffice & Openoffice
 
 INSTALLATION:
-In Libreoffice or Openoffice you just need this extension:
-https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python
+## In Libreoffice or Openoffice you just need this extension:
+## https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python
 <img width="1599" height="817" alt="image" src="https://github.com/user-attachments/assets/c35be396-d9fc-428b-baff-7a6347407efb" />
 
-Download it and go to Libreoffice/Openoffice, open tools menu and then open Extensions option.
+## Download it and go to Libreoffice/Openoffice, open tools menu and then open Extensions option.
 <img width="1600" height="859" alt="image" src="https://github.com/user-attachments/assets/a0895ad1-c0b7-4fd1-8a10-f4410f2ba863" />
 
-It will have 'Add' button, click it and find the path where you installed the extension.
-And then open the extension (APSO.oxt file), now the Libreoffice/Openoffice installs the extension.
-This will restart the LibreCalc App.
+## It will have 'Add' button, click it and find the path where you installed the extension.
+## And then open the extension (APSO.oxt file), now the Libreoffice/Openoffice installs the extension.
+## This will restart the LibreCalc App.
 <img width="1600" height="857" alt="image" src="https://github.com/user-attachments/assets/98d53866-7ab8-46da-a441-2a600d96e5c3" />
 
 USE:
@@ -26,16 +26,17 @@ Paste the MacroClass file's code inside that module, and at the bottom add:
     Calc.ActiveCell.String = "Hello world"
     Calc.Range("C1:D10").String = "Hello World"
 Save it and again go to Tools > Macros > Organise Python Macros.
-Go to 'My Macros' > Automate and run it.
+## Go to 'My Macros' > Automate and run it.
 <img width="1599" height="860" alt="image" src="https://github.com/user-attachments/assets/5a10be91-ef89-4bcd-aa5b-9d8cda2c65ef" />
 <img width="1600" height="860" alt="image" src="https://github.com/user-attachments/assets/88f5f8f7-f5ad-47ba-a0c5-9ee50cd95e36" />
 <img width="1600" height="859" alt="image" src="https://github.com/user-attachments/assets/c290c524-6058-4a5d-bfad-cacbe69158ff" />
 
-Add the Workbook class code here:
+## Add the Workbook class code here:
 <img width="1911" height="1034" alt="image" src="https://github.com/user-attachments/assets/96a13d8c-ffd4-472d-a2e9-593569661270" />
 
-Add this to the bottom of code:
-<img width="1919" height="1037" alt="image" src="https://github.com/user-attachments/assets/609a40b7-eab9-4084-8fc1-df05e6bceea0" />
+## Add this to the bottom of code:
+<img width="1919" height="1033" alt="image" src="https://github.com/user-attachments/assets/a8b27393-b8d9-439b-9bbd-3eef8e2a1096" />
+
 
 
 EXPLAINATION:

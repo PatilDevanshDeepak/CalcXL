@@ -1,8 +1,9 @@
 # Libreoffice Calc Python Macros version 0.4 - Stable
+The Repo's name has been changed to CalcXL
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
-## Summary: This is the stable branch of v0.4, which mainly focuses on fixing bugs and giving a stable environment.
+Summary: This is the stable branch of v0.4, which mainly focuses on fixing bugs and giving a stable environment.
 
 ## New:
 Contructors Added:
