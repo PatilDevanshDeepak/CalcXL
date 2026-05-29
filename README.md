@@ -1,9 +1,17 @@
-# CalcXL version 0.4 - Stable
-## This is a stable branch and might not contain bugs
-
-## Repo's name is updated to: CalcXL
+# Libreoffice Calc Python Macros version 0.4 - Stable
+The Repo's name has been changed to CalcXL
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
-## Summary: This is the development branch of v0.4 its for adding new features.
-The clcToRight, clcToLeft, clcToDown, clcToUp & ClearContents function were added to dev branch to maintain the stability of this branch.
+Summary: This is the stable branch of v0.4, which mainly focuses on fixing bugs and giving a stable environment.
+
+## New:
+Contructors Added:
+  MaxRows: Gets total rows from the current worksheet,
+  MaxColumns: Gets total column from the current worksheet
+
+## Bug Fixed:
+- Fixed the Select Function
+- Fixed ActiveCell Constructor
+- Removed clcToRight, clcToLeft, clcDown & clcUp functions was removed and was added to this branch and added to Dev branch
+- Removed ClearContents Function and was added to Dev branch
