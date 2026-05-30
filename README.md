@@ -5,9 +5,11 @@
 ## Summary: The development branch mostly focuses on testing and adding new features. This branch migh contain bugs as new features are added and tested in this branch.
 
 New:
+* End function added, which is just like Excel's ActiveCell.End(xlToRight/xlToLeft/xlUp/xlDown) where you can simulate the action of ctrl + right/left/up/down
 * Contructors Added:
   - MaxRows: Gets total rows from the current worksheet,
   - MaxColumns: Gets total column from the current worksheet
+ 
 
 ## Bug Fixed:
 - Fixed the Select Function
