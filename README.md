@@ -2,7 +2,7 @@
 
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
-## Summary: The development branch mostly focuses on testing and adding new features. This branch migh contain bugs as new features are added and tested in this branch.
+## Summary: The development branch mostly focuses on stability & bug fixes.
 
 New:
 * End function added, which is just like Excel's ActiveCell.End(xlToRight/xlToLeft/xlUp/xlDown) where you can simulate the action of ctrl + right/left/up/down
@@ -16,5 +16,5 @@ New:
 ## Bug Fixed:
 - Fixed the Select Function
 - Fixed ActiveCell Constructor
-- Removed clcToRight, clcToLeft, clcUp, clcDown functions from stable branch and added to this branch
+- The clcToRight, clcToLeft, clcUp, clcDown functions are deprecated from the project and have a new alternative 'End' function for that 
 - Remove ClearContents function from the stable branch and added to this branch
