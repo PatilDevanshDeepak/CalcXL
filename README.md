@@ -3,7 +3,7 @@
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
 ## Anouncements
-- Dev branch is been deleted and all the new function are added to the stable branch
+- Dev branch is been deleted and all the new function are added to this branch
 - Clear Contents function contains bugs and will be added soon after fixing
 - Developemn in progress for new features like: Fill Right/Fill Left/Fill Up/Fill Down
 
