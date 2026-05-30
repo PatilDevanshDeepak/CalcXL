@@ -259,7 +259,7 @@ Calc = Workbook()
 # Your Macro will start from any function you create outside the Class
 def Automate():
 	# Your Macro start from here
-	Calc.Select(Calc.End("up"))
+	Calc.Select(Calc.End("right"))
 
 
 # If you want to add another macro, you can create a new function
