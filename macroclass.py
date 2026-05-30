@@ -1,15 +1,16 @@
 class Workbook:
 	# ----- Contructors for workbook class -----
 	def __init__(self):
-		self.doc = XSCRIPTCONTEXT.getDocument()		# gets the current working document
-		self.active = self.doc.CurrentController 	# gets the current controller which is responsible for getting active cells or sheets
-		self.Sheets = self.doc.Sheets 	# gets all the sheets in the current working doucments as objects
-		self.ActiveSheet = self.active.getActiveSheet() 	# gets active sheet in the current working document
-		self.SheetsCount = self.Sheets.getCount() 	# gets the total number of sheets of the current working document
-		self.ActiveSheetName = self.ActiveSheet.getName() 	# gets the current working sheet's name 
-		self.ActiveSheetIndex = self.Sheets.getElementNames().index(self.ActiveSheetName)+1 	# gets the current working sheet's postions from the sheets 
-		self.MaxRows = self.ActiveSheet.Rows.Count 		# gets the total number of rows in the current working sheets
-		self.MaxColumns = self.ActiveSheet.Columns.Count	 # gets the totol number of columns in the current working sheets
+		self.ctx = XSCRIPTCONTEXT
+		self.doc = self.ctx.getDocument()       # gets the current working document
+		self.active = self.doc.CurrentController    # gets the current controller which is responsible for getting active cells or sheets
+		self.Sheets = self.doc.Sheets   # gets all the sheets in the current working doucments as objects
+		self.ActiveSheet = self.active.getActiveSheet()     # gets active sheet in the current working document
+		self.SheetsCount = self.Sheets.getCount()   # gets the total number of sheets of the current working document
+		self.ActiveSheetName = self.ActiveSheet.getName()   # gets the current working sheet's name 
+		self.ActiveSheetIndex = self.Sheets.getElementNames().index(self.ActiveSheetName)+1     # gets the current working sheet's postions from the sheets 
+		self.MaxRows = self.ActiveSheet.Rows.Count      # gets the total number of rows in the current working sheets
+		self.MaxColumns = self.ActiveSheet.Columns.Count
 
 
 	# ----- Macro Functions -----
@@ -120,6 +121,99 @@ class Workbook:
 		elif isinstance(addr , str):
 			self.SearchSheetByName(addr).removeByName(addr)
 
+	def End(self, direction):
+		direction = direction.lower()
+		start_row = self.ActiveCell.RangeAddress.StartRow
+		start_col = self.ActiveCell.RangeAddress.StartColumn
+		CONTENT_FLAGS = 23 
+		if direction == "right":
+			if start_col >= self.MaxColumns - 1: return self.ActiveCell
+			scan_range = self.ActiveSheet.getCellRangeByPosition(start_col + 1, start_row, self.MaxColumns - 1, start_row)
+		elif direction == "left":
+			if start_col <= 0: return self.ActiveCell
+			scan_range = self.ActiveSheet.getCellRangeByPosition(0, start_row, start_col - 1, start_row)
+		elif direction == "down":
+			if start_row >= self.MaxRows - 1: return self.ActiveCell
+			scan_range = self.ActiveSheet.getCellRangeByPosition(start_col, start_row + 1, start_col, self.MaxRows - 1)
+		elif direction == "up":
+			if start_row <= 0: return self.ActiveCell
+			scan_range = self.ActiveSheet.getCellRangeByPosition(start_col, 0, start_col, start_row - 1)
+		else:
+			return self.ActiveCell
+		filled_ranges = scan_range.queryContentCells(CONTENT_FLAGS).getRangeAddresses()
+		empty_ranges = scan_range.queryEmptyCells().getRangeAddresses()
+		is_start_empty = len(self.ActiveCell.getString()) == 0
+		if direction == "right":
+			if is_start_empty:
+				# Jump straight to the beginning of the next data cluster
+				if filled_ranges:
+					return self.ActiveSheet.getCellByPosition(filled_ranges[0].StartColumn, start_row)
+				return self.ActiveSheet.getCellByPosition(self.MaxColumns - 1, start_row)
+			else:
+				# We are sitting on data; find where this current continuous run breaks
+				if empty_ranges and empty_ranges[0].StartColumn == start_col + 1:
+					# Next cell is already empty! Find where data starts back up again
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(filled_ranges[0].StartColumn, start_row)
+					return self.ActiveSheet.getCellByPosition(self.MaxColumns - 1, start_row)
+				elif empty_ranges:
+					# There is continuous data; jump right to the cell before the first empty gap
+					return self.ActiveSheet.getCellByPosition(empty_ranges[0].StartColumn - 1, start_row)
+				else:
+					# Data runs all the way cleanly to the end edge of the sheet
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(filled_ranges[-1].EndColumn, start_row)
+					return self.ActiveSheet.getCellByPosition(self.MaxColumns - 1, start_row)
+		elif direction == "left":
+			if is_start_empty:
+				if filled_ranges:
+					return self.ActiveSheet.getCellByPosition(filled_ranges[-1].EndColumn, start_row)
+				return self.ActiveSheet.getCellByPosition(0, start_row)
+			else:
+				if empty_ranges and empty_ranges[-1].EndColumn == start_col - 1:
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(filled_ranges[-1].EndColumn, start_row)
+					return self.ActiveSheet.getCellByPosition(0, start_row)
+				elif empty_ranges:
+					return self.ActiveSheet.getCellByPosition(empty_ranges[-1].EndColumn + 1, start_row)
+				else:
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(filled_ranges[0].StartColumn, start_row)
+					return self.ActiveSheet.getCellByPosition(0, start_row)
+		elif direction == "down":
+			if is_start_empty:
+				if filled_ranges:
+					return self.ActiveSheet.getCellByPosition(start_col, filled_ranges[0].StartRow)
+				return self.ActiveSheet.getCellByPosition(start_col, self.MaxRows - 1)
+			else:
+				if empty_ranges and empty_ranges[0].StartRow == start_row + 1:
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(start_col, filled_ranges[0].StartRow)
+					return self.ActiveSheet.getCellByPosition(start_col, self.MaxRows - 1)
+				elif empty_ranges:
+					return self.ActiveSheet.getCellByPosition(start_col, empty_ranges[0].StartRow - 1)
+				else:
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(start_col, filled_ranges[-1].EndRow)
+					return self.ActiveSheet.getCellByPosition(start_col, self.MaxRows - 1)
+		elif direction == "up":
+			if is_start_empty:
+				if filled_ranges:
+					return self.ActiveSheet.getCellByPosition(start_col, filled_ranges[-1].EndRow)
+				return self.ActiveSheet.getCellByPosition(start_col, 0)
+			else:
+				if empty_ranges and empty_ranges[-1].EndRow == start_row - 1:
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(start_col, filled_ranges[-1].EndRow)
+					return self.ActiveSheet.getCellByPosition(start_col, 0)
+				elif empty_ranges:
+					return self.ActiveSheet.getCellByPosition(start_col, empty_ranges[-1].EndRow + 1)
+				else:
+					if filled_ranges:
+						return self.ActiveSheet.getCellByPosition(start_col, filled_ranges[0].StartRow)
+					return self.ActiveSheet.getCellByPosition(start_col, 0)
+		return self.ActiveCell
+
 	# Calc.WorksheetFunctions("functionName in capital" , [args as tuple]) for eg: Calc.Offset(0 , -1).Value = Calc.WorksheetFunctions("ISBLANK" , [Calc.ActiveCell.getString()].
 	# IF you are giving cell ref. always add .getString() ahead to get the cell contents as String
 	def WorksheetFunctions(self, functionName , args):
@@ -164,7 +258,7 @@ Calc = Workbook()
 # Your Macro will start from any function you create outside the Class
 def Automate():
 	# Your Macro start from here
-	Calc.ActiveCell.String = Calc.maxColumns
+	Calc.Select(Calc.End("up"))
 
 
 # If you want to add another macro, you can create a new function
