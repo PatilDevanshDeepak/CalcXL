@@ -9,8 +9,8 @@ class Workbook:
 		self.SheetsCount = self.Sheets.getCount()   # gets the total number of sheets of the current working document
 		self.ActiveSheetName = self.ActiveSheet.getName()   # gets the current working sheet's name 
 		self.ActiveSheetIndex = self.Sheets.getElementNames().index(self.ActiveSheetName)+1     # gets the current working sheet's postions from the sheets 
-		self.MaxRows = self.ActiveSheet.Rows.Count      # gets the total number of rows in the current working sheets
-		self.MaxColumns = self.ActiveSheet.Columns.Count
+		self.MaxRows = self.ActiveSheet.Rows.Count      # gets the total number of rows in the current working sheet
+		self.MaxColumns = self.ActiveSheet.Columns.Count	# gets the total number of columns in the current working sheet
 
 
 	# ----- Macro Functions -----
@@ -121,6 +121,7 @@ class Workbook:
 		elif isinstance(addr , str):
 			self.SearchSheetByName(addr).removeByName(addr)
 
+	# Returns a cell which is at the end of data. Just like VBA's ActiveCell.End(xlToRight/xlToLeft/xlUp/xlDown) Eg: Calc.Select(Calc.End("Right"))
 	def End(self, direction):
 		direction = direction.lower()
 		start_row = self.ActiveCell.RangeAddress.StartRow
