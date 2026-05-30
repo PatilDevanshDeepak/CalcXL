@@ -3,6 +3,7 @@
 📖 **[How to Use Guide](./HOWTOUSE.md)** | Quick Start
 
 ## Anouncements
+- An alternative function to VBA's End function has been added to v0.4 which simulates the action of Ctrl + Right/Left/Up/Down arrowkeys
 - Dev branch is been deleted and all the new function are added to this branch
 - Clear Contents function contains bugs and will be added soon after fixing
 - Developemn in progress for new features like: Fill Right/Fill Left/Fill Up/Fill Down
