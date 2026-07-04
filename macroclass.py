@@ -1,7 +1,8 @@
 class Workbook:
 	# ----- Contructors for workbook class -----
 	def __init__(self):
-		self.ctx = XSCRIPTCONTEXT
+		self.ctx = XSCRIPTCONTEXT   # libreoffice API
+		self.smgr = self.ctx.getComponentContext().getServiceManager()    # service manager API
 		self.doc = self.ctx.getDocument()       # gets the current working document
 		self.active = self.doc.CurrentController    # gets the current controller which is responsible for getting active cells or sheets
 		self.Sheets = self.doc.Sheets   # gets all the sheets in the current working doucments as objects
@@ -11,6 +12,8 @@ class Workbook:
 		self.ActiveSheetIndex = self.Sheets.getElementNames().index(self.ActiveSheetName)+1     # gets the current working sheet's postions from the sheets 
 		self.MaxRows = self.ActiveSheet.Rows.Count      # gets the total number of rows in the current working sheet
 		self.MaxColumns = self.ActiveSheet.Columns.Count	# gets the total number of columns in the current working sheet
+		self.NameRanges = self.doc.getPropertyValue("NamedRanges")
+		self.NameRangesCount = self.NameRanges.getCount()
 
 
 	# ----- Macro Functions -----
@@ -24,11 +27,18 @@ class Workbook:
 				self._select_core(obj)
 			except:
 				pass		
-	
+
 	# Return a Cell with given row and column as an Object Eg Calc.Cell(1 , 1) will return cell A1
 	def Cell(self, row, col):
 		return self.ActiveSheet.getCellByPosition(col-1, row-1)
-		
+
+	def Name(self, oCell):
+		for i in range(self.NameRangesCount):
+			nr = self.NameRanges.getByIndex(i)
+			if nr.Content == oCell.AbsoluteName:
+				return nr.Name
+		return None
+
 	# IMPROVED Now it can set value to a Range Eg: Calc.Range("A1").String = "Hello word" or Calc.Range("A1:"B10") = "Hello world" or Calc.Range(Cell(1 , 1) , Cell(20 , 1))
 	def Range(self, fromCell=None , toCell=None): 	
 		if toCell==None:
@@ -50,8 +60,26 @@ class Workbook:
 					elif n == "Formula": self._r.setFormulaArray(data)
 				else:
 					setattr(self._r, n, v)
-		return _R(rng)	
-	
+		return _R(rng)
+
+	def MsgBox(self, text, title="MsgBox"):
+		toolkit = self.smgr.createInstanceWithContext(
+			"com.sun.star.awt.Toolkit",
+			self.ctx
+		)
+
+		parent = self.active.getFrame().getContainerWindow()
+
+		msgbox = toolkit.createMessageBox(
+			parent,
+			0,
+			1,
+			title,
+			text
+		)
+
+		return msgbox.execute()
+
 	# This acts like ActiveCell.Offset in VBA, eg: Calc.Offset(0 , 1) will return the cell from the next column as an object
 	def Offset(self, rowIndex, colIndex): 
 		maxColumns = self.ActiveSheet.Columns.Count - 1
@@ -69,15 +97,15 @@ class Workbook:
 	# Returns the Column Index for a given Cell/Range
 	def Column(self, oCell): 
 		return oCell.RangeAddress.StartColumn + 1
-	
+
 	# Returns the End Row Index for a given Cell/Range
 	def EndRow(self , oCell): 
 		return oCell.RangeAddress.EndRow + 1
-	
+
 	# Returns the End Column Index for a given Cell/Range
 	def EndColumn(self , oCell):
 		return oCell.RangeAddress.EndColumn + 1
-	
+
 	# Returns the Address given Cell/Range
 	def RangeAddress(self , absolute=False):
 		if absolute:
@@ -87,7 +115,7 @@ class Workbook:
 	# Returns the Sheet as an Object searched by Sheet Name
 	def SheetName(self , sheetName):
 		return self.Sheets.getByName(sheetName)
-	
+
 	# Returns the Sheet as an Object searched by Sheet Index
 	def SheetIndex(self , index):
 		return self.Sheets.getByIndex(index-1)
@@ -106,12 +134,12 @@ class Workbook:
 		self.ActiveSheetIndex = setBefore
 		self.SheetsCount = self.Sheets.getCount()
 		return newSheet
-	
+
 	# Renames a Sheet by replacing its old name with a new one
 	def RenameSheet(self , oldName , newName):
 		Sheet = self.SheetName(oldName)
 		Sheet.setName(newName)
-	
+
 	# Deletes a sheet by addr, an addr could be sheet's name or index
 	def DeleteSheet(self , addr):
 		if isinstance(addr , int):
@@ -217,7 +245,7 @@ class Workbook:
 
 	# Calc.WorksheetFunctions("functionName in capital" , [args as tuple]) for eg: Calc.Offset(0 , -1).Value = Calc.WorksheetFunctions("ISBLANK" , [Calc.ActiveCell.getString()].
 	# IF you are giving cell ref. always add .getString() ahead to get the cell contents as String
-	def WorksheetFunctions(self, functionName , args):
+	def WorksheetFunction(self, functionName , args):
 		smgr = XSCRIPTCONTEXT.getComponentContext().ServiceManager
 		func_access = smgr.createInstanceWithContext(
 			"com.sun.star.sheet.FunctionAccess",
@@ -259,9 +287,7 @@ Calc = Workbook()
 # Your Macro will start from any function you create outside the Class
 def Automate():
 	# Your Macro start from here
-	Calc.Select(Calc.End("right"))
+	Calc.ActiveCell.String = Calc.Name(Calc.ActiveCell)
 
 
-# If you want to add another macro, you can create a new function
-def test():
-	Calc.Select(Calc.Range("A1"))
+
