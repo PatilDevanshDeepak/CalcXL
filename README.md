@@ -15,10 +15,15 @@ New:
 * End function added, which is just like Excel's ActiveCell.End(xlToRight/xlToLeft/xlUp/xlDown) where you can simulate the action of ctrl + right/left/up/down
   <img width="1919" height="1042" alt="image" src="https://github.com/user-attachments/assets/dc2906cb-dcd3-49e6-ba24-dc36a9a12dfd" />
 
+  Name Function added, which is just like Excel's Range("celladdr").Name.Name which returns the name of a cell
+
 * Contructors Added:
+  - smgr: Libreoffice service manager API
   - MaxRows: Gets total rows from the current worksheet,
   - MaxColumns: Gets total column from the current worksheet
-  <img width="1402" height="54" alt="image" src="https://github.com/user-attachments/assets/a98e2027-96cd-47d1-a4c6-df649e1cc5d4" />
+  - NameRanges: Gets all the defined name for the cells
+  - NameRangesCount: Gets count of all the Names in the NameRanges
+  <img width="1412" height="308" alt="image" src="https://github.com/user-attachments/assets/2fa59eb4-b067-4588-b876-ed542c49219f" />
 
 ## Bug Fixed:
 - Fixed the Select Function
